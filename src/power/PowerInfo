@@ -1,0 +1,47 @@
+sensor InP node1 @powerNetIn
+sensor OutP node1 @powerNetOut
+sensor OutP node1 @powerNetOut
+sensor CapacityP node1 @powerNetCapacity
+sensor StoredP node1 @powerNetStored
+op sub TotalP InP OutP
+op mul PercentB StoredP 100
+op idiv PercentB PercentB CapacityP
+jump 10 notEqual TotalP 0
+print " [violet]■[white] Disconnected... "
+jump 20 lessThanEq TotalP 0
+op sub LeftB CapacityP StoredP
+op idiv LeftT LeftB TotalP
+op mod LeftTS LeftT 60
+op idiv LeftTM LeftT 60
+print " [violet]■[white] UntilCharged: "
+print LeftTM
+print "m "
+print LeftTS
+print "s"
+jump 30 greaterThanEq TotalP 0
+op idiv LeftT StoredP TotalP
+op abs LeftT LeftT TotalP
+op mod LeftTS LeftT 60
+op idiv LeftTM LeftT 60
+print " [violet]■[white] UntillBlackOut: [red]"
+print LeftTM
+print "m "
+print LeftTS
+print "s"
+print "\n\n [violet]■[white] StoredPower: "
+print PercentB
+print "%"
+printflush message1
+op div Weight 100 16
+op idiv WeightCount PercentB Weight
+op add WeightCount WeightCount 2
+set i 2
+getlink BC i
+op add i i 1
+control config BC @plastanium 0 0 0
+jump 38 lessThan i WeightCount
+set i 18
+getlink BC i
+op sub i i 1
+control config BC @silicon 0 0 0
+jump 43 greaterThanEq i WeightCount
