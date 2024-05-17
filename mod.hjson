@@ -1,8 +1,0 @@
-name: "polar-logic"
-displayName: "Logic Display Schematics"
-author: polar
-description: "logic display schematics"
-version: "1.0"
-minGameVersion: "146"
-dependencies: []
-hidden: false
