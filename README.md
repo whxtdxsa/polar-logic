@@ -12,4 +12,4 @@ You can download and install these blueprints through the Mindustry in-game mod 
 # Screenshots
 
 
-![running.png](./src/running.png)
+![running.png](./assets/running.png)

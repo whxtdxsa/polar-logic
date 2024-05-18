@@ -1,0 +1,11 @@
+{
+  "name": "polarlogic",
+  "displayName": "PolarLogic",
+  "author": "whxtdxsa",
+  "version": "1.1",
+  "minGameVersion": "146",
+  "description": "Logic of Polar-Coordinate",
+  "subtitle": "Demo of Logic Processor",
+  "dependencies": [],
+  "hidden": false
+}
