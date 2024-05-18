@@ -9,7 +9,7 @@ This repository contains a collection of blueprints for the game Mindustry, util
 
 You can download and install these blueprints through the Mindustry in-game mod browser.
 
-# Result
+# Screenshots
 
 
-![running.png](./assets/running.png)
+![running.png](./src/running.png)
