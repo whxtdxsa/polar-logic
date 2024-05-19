@@ -1,0 +1,51 @@
+set Design polar
+set radian 55
+draw stroke 3 0 0 0 0 0
+draw clear 0 0 0 124 0 0
+draw color 255 255 255 255 0 0
+draw linePoly 89 89 255 radian 0 0
+set time @time
+op div time time 1000
+op mod sec time 60
+op floor sec sec 60
+op div min time 60
+op add min min 24
+op mod min min 60
+op floor min min 60
+op div hour time 3600
+op mod hour hour 24
+op floor hour hour 60
+set iter 0
+set i sec
+jump 25 equal iter 0
+set i min
+jump 25 equal iter 1
+set i hour
+jump 25 equal iter 2
+set Function Function
+op mul i i 6
+op cos x i b
+op mul x radian x
+op add x 89 x
+op sin y i b
+op mul y radian y
+op add y 89 y
+draw color 225 255 255 255 0 0
+jump 37 equal iter 0
+draw color 0 255 0 255 0 0
+jump 37 equal iter 1
+draw color 225 0 0 255 0 0
+draw line 89 89 y x 0 0
+op add iter iter 1
+jump 19 lessThan iter 3
+drawflush display1
+print "[pink]Code Snippet of Clock Display [white]\n"
+print "\n[lightgray]Time:  [white]["
+print hour
+print " : "
+print min
+print " : "
+print sec
+print "]"
+printflush message1
+jump 6 lessThan sec 59

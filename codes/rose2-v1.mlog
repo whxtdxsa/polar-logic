@@ -1,0 +1,26 @@
+set Design polar
+print "[pink]Code Snippet of Polar Coord[white] \n"
+print "\n[lightgray]Eq :[white] r = sin(5/7seta)"
+printflush message1
+draw clear 0 0 0 255 0 0
+set ratio 55
+set time @time
+op div sec time 420
+op mod sec sec 60
+op mul seta sec 42
+op mul 5seta seta 5
+op div 5/7seta 5seta 7
+op sin r 5/7seta b
+op cos x seta b
+op mul x x r
+op mul x x ratio
+op add x x 89
+op sin y seta b
+op mul y y r
+op mul y y ratio
+op add y y 89
+draw stroke 3 255 255 128 0 0
+draw color 255 255 255 128 0 0
+draw line 89 89 x y 0 0
+drawflush display1
+jump 5 lessThan sec 59.5

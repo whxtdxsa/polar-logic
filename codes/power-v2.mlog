@@ -1,0 +1,59 @@
+set Design polar
+print "[pink]Code Snippet of Power [white]\n"
+wait 0.5
+sensor p_in node1 @powerNetIn
+sensor p_out node1 @powerNetOut
+op floor p_in p_in b
+op floor p_out p_out b
+op sub p_total p_in p_out
+print "\n[lightgray]Total Power : [white]"
+set measure ""
+set color @plastanium
+jump 16 greaterThan p_total 0
+set color @silicon
+jump 16 equal p_total 0
+set color @blast-compound
+print "[red]"
+jump 20 lessThan p_total 1000
+op idiv p_total p_total 100
+op div p_total p_total 10
+set measure "k"
+jump 24 lessThan p_total 1000
+op idiv p_total p_total 100
+op div p_total p_total 10
+set measure "mil"
+print p_total
+print measure
+print "\n[lightgray]Input : [white]"
+set measure ""
+jump 32 lessThan p_in 1000
+op idiv p_in p_in 100
+op div p_in p_in 10
+set measure "k"
+jump 36 lessThan p_in 1000
+op idiv p_in p_in 100
+op div p_in p_in 10
+set measure "mil"
+print p_in
+print measure
+print "/s"
+print "\n[lightgray]Output : [white]"
+set measure ""
+jump 45 lessThan p_out 1000
+op idiv p_out p_out 100
+op div p_out p_out 10
+set measure "k"
+jump 49 lessThan p_out 1000
+op idiv p_out p_out 100
+op div p_out p_out 10
+set measure "mil"
+op sub p_out 0 p_out
+print p_out
+print measure
+print "/s"
+set i 2
+getlink sorter i
+control config sorter color 0 0 0
+op add i i 1
+jump 54 lessThan i @links
+printflush message1

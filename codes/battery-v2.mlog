@@ -1,0 +1,52 @@
+set Design polar
+print "[pink]Code Snippet of Battery [white]\n"
+wait 0.5
+sensor p_in node1 @powerNetIn
+sensor p_out node1 @powerNetOut
+sensor p_stored node1 @powerNetStored
+sensor p_cap node1 @powerNetCapacity
+op sub p_total p_in p_out
+jump 13 lessThan p_total 0
+print "\n[lightgray]Until Charged : [white]"
+op sub remained_cap p_cap p_stored
+op idiv remained_time remained_cap p_total
+jump 16 always p_total 0
+print "\n[lightgray]Until Blackout : [red]"
+op idiv remained_time p_stored p_total
+op abs remained_time remained_time b
+op mod remained_sec remained_time 60
+op idiv remained_min remained_time 60
+print remained_min
+print "m "
+print remained_sec
+print "s"
+op div stored_percent p_stored p_cap
+op floor p_stored p_stored b
+op mul stored_percent stored_percent 1000
+op floor stored_percent stored_percent b
+op div stored_percent stored_percent 10
+print "\n[lightgray]Power Stored : [white]"
+op idiv p_stored p_stored 1000
+set norm "k"
+jump 34 lessThan p_stored 1000
+op idiv p_stored p_stored 100
+op div p_stored p_stored 10
+set norm "mil"
+print p_stored
+print norm
+print " ("
+print stored_percent
+print "%)"
+printflush message1
+op div weight 100 16
+op idiv num_of_colors stored_percent weight
+op add num_of_colors num_of_colors 2
+set i 1
+set color @plastanium
+getlink sorter i
+control config sorter color 0 0 0
+op add i i 1
+jump 50 lessThan i num_of_colors
+set color @silicon
+jump 45 lessThan i @links
+control config sorter1 @plastanium 0 0 0
